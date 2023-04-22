@@ -21,7 +21,31 @@ public:
         return dp[si][ei]=min(f1,f2);
     }
     int minInsertions(string s) {
-        memset(dp,-1,sizeof(dp));
-        return palindrome(s,0,s.length()-1);
+       int dp[s.length()][s.length()];
+        
+        for(int g=0;g<s.length();g++){
+            
+            for(int j=g,i=0;j<s.length();i++,j++){
+                
+                if(g==0){
+                    dp[i][j]=0;
+                }else if(g==1){
+                    
+                    if(s[i]==s[j]){
+                        dp[i][j]=0;
+                    }else{
+                        dp[i][j]=1;
+                    }
+                }else{
+                    
+                    if(s[i]==s[j]){
+                        dp[i][j]=dp[i+1][j-1];
+                    }else{
+                        dp[i][j] = min(1 + dp[i + 1][j], 1 + dp[i][j - 1]);
+                    }
+                }
+            }
+        }
+        return dp[0][s.length()-1];
     }
 };
