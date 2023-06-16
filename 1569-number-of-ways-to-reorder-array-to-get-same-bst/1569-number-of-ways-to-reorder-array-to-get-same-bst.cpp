@@ -43,7 +43,7 @@ private:
 
 		int left_len = left.size();
         int right_len = right.size();
-        return (((ncr[n - 1][left_len] * lAns) % mod) * rAns) % mod;
-        // return (((ncr[n - 1][right_len] * lAns) % mod) * rAns) % mod;
+        // return (((ncr[n - 1][left_len] * lAns) % mod) * rAns) % mod;
+        return (((ncr[n - 1][right_len] * lAns) % mod) * rAns) % mod;
     }
 };
