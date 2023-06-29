@@ -75,9 +75,9 @@ public:
         //         cout<<x<<" ";
         // }
         // cout<<"\n";
-        cmp(a1,a2,ans,goal);
+        // cmp(a1,a2,ans,goal);
         // cout<<"\n";
-        // cmp(a2,a1,ans,goal);
+        cmp(a2,a1,ans,goal);
         
         
         
