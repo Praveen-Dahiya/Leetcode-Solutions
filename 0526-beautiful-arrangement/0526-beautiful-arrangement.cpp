@@ -1,30 +1,31 @@
 class Solution {
 public:
-    int ans=0;
+    int dp[15][(1<<15) +1];
     int rec(int n,int mask,int idx){
        
         if(idx>=n){
-            ans++;
             return 1;
         }
-        
-        int ans=1;
+        if(dp[idx][mask] !=-1){
+            return dp[idx][mask];
+        }
+        int ans=0;
         
         for(int i=1;i<=n;i++){
              
             if(((idx+1)%i)==0 || (i%(idx+1))==0){
                 
                 if(( mask &(1<<(i-1)))==0){
-                    ans*=rec(n,mask|(1<<(i-1)),idx+1);
+                    ans+=rec(n,mask|(1<<(i-1)),idx+1);
                 }
             }
         }
-        return ans;
+        return dp[idx][mask]=ans;
         
         
     }
     int countArrangement(int n) {
-        rec(n,0,0);
-        return ans;
+        memset(dp,-1,sizeof(dp));
+        return rec(n,0,0);
     }
 };
